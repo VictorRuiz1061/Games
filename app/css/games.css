@@ -1,0 +1,375 @@
+/* ===========================================
+   ESTILOS BASE COMPARTIDOS PARA LA PÁGINA DE JUEGOS
+   Estos estilos se aplican a todos los dispositivos
+   =========================================== */
+
+/* Reseteo básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos de botones compartidos */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+/* Iconos */
+.icon {
+  font-size: 1.2rem;
+}
+
+/* ===========================================
+   ESTILOS PARA ESCRITORIO (PC)
+   Se aplican cuando el ancho de pantalla es mayor a 769px
+   =========================================== */
+@media (min-width: 769px) {
+  /* Estilos generales */
+  .games-page {
+    background-color: #8b5353;
+    min-height: 100vh;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Título de la página */
+  .games-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 10px 0;
+  }
+
+  .games-header h1 {
+    font-size: 1.8rem;
+    font-weight: normal;
+    margin: 0;
+    color: white;
+  }
+
+  /* Botón de cerrar sesión */
+  .cerrar-sesion {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: white;
+    color: #8b5353;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+
+  .cerrar-sesion:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+
+  /* Botón de adicionar */
+  .adicionar-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    width: 100%;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: all 0.2s ease;
+  }
+
+  .adicionar-btn:hover {
+    background-color: #3e9c42;
+  }
+
+  .adicionar-btn span {
+    margin-right: 8px;
+    font-size: 1.5rem;
+  }
+
+  /* Contenedor de juegos */
+  .games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  /* Tarjeta de juego individual */
+  .game-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .game-card:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .game-image {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+
+  .game-info {
+    flex: 1;
+  }
+
+  .game-info h2 {
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+    color: white;
+  }
+
+  .game-info p {
+    font-size: 0.95rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Botones de acción */
+  .game-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  .action-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .search-btn {
+    background-color: #8b5353;
+    color: white;
+  }
+
+  .search-btn:hover {
+    background-color: #9e6363;
+  }
+
+  .edit-btn {
+    background-color: #8b5353;
+    color: white;
+  }
+
+  .edit-btn:hover {
+    background-color: #9e6363;
+  }
+
+  .delete-btn {
+    background-color: #d9534f;
+    color: white;
+  }
+
+  .delete-btn:hover {
+    background-color: #e66762;
+  }
+}
+
+/* ===========================================
+   ESTILOS PARA MÓVIL
+   Se aplican cuando el ancho de pantalla es menor o igual a 768px
+   =========================================== */
+@media (max-width: 768px) {
+  /* Estilos generales */
+  .games-page {
+    background-color: #8b5353;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: auto;
+  }
+
+  /* Título de la página */
+  .games-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 5px 0;
+  }
+
+  .games-header h1 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 0;
+    color: white;
+  }
+
+  /* Botón de cerrar sesión */
+  .cerrar-sesion {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    color: #8b5353;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  /* Botón de adicionar */
+  .adicionar-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px;
+    width: 100%;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .adicionar-btn span {
+    margin-right: 5px;
+    font-size: 1.5rem;
+  }
+
+  /* Contenedor de juegos */
+  .games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  /* Tarjeta de juego individual */
+  .game-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .game-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+
+  .game-info {
+    flex: 1;
+  }
+
+  .game-info h2 {
+    font-size: 1.1rem;
+    margin: 0 0 3px 0;
+    color: white;
+  }
+
+  .game-info p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Botones de acción */
+  .game-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .action-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-btn {
+    background-color: #8b5353;
+    color: white;
+  }
+
+  .edit-btn {
+    background-color: #8b5353;
+    color: white;
+  }
+
+  .delete-btn {
+    background-color: #d9534f;
+    color: white;
+  }
+}
+
+/* ===========================================
+   AJUSTES PARA DISPOSITIVOS MUY PEQUEÑOS
+   Se aplican cuando el ancho de pantalla es menor o igual a 480px
+   =========================================== */
+@media (max-width: 480px) {
+  .games-page {
+    padding: 15px;
+  }
+  
+  .games-header h1 {
+    font-size: 1.3rem;
+  }
+  
+  .game-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .game-info h2 {
+    font-size: 1rem;
+  }
+  
+  .game-info p {
+    font-size: 0.8rem;
+  }
+  
+  .action-btn {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .icon {
+    font-size: 1rem;
+  }
+}

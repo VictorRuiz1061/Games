@@ -1,0 +1,299 @@
+/* ===========================================
+   ESTILOS BASE COMPARTIDOS PARA LA PÁGINA DE CONSULTAR VIDEOJUEGO
+   Estos estilos se aplican a todos los dispositivos
+   =========================================== */
+
+/* Reseteo básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================================
+   ESTILOS PARA ESCRITORIO (PC)
+   Se aplican cuando el ancho de pantalla es mayor a 769px
+   =========================================== */
+@media (min-width: 769px) {
+  /* Contenedor principal */
+  .ver-page {
+    background-color: #8b5353;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+  }
+
+  /* Encabezado */
+  .ver-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .ver-header h1 {
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: white;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  /* Botón de atrás */
+  .atras-btn {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .atras-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Botón de cerrar */
+  .cerrar-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    color: #8b5353;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+
+  .cerrar-btn:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+
+  /* Contenedor de imagen */
+  .game-image-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border: 5px solid white;
+  }
+
+  .game-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Detalles del juego */
+  .game-details {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .detail-row {
+    display: flex;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .detail-label {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    width: 40%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .detail-value {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 15px;
+    width: 60%;
+    color: white;
+  }
+}
+
+/* ===========================================
+   ESTILOS PARA MÓVIL
+   Se aplican cuando el ancho de pantalla es menor o igual a 768px
+   =========================================== */
+@media (max-width: 768px) {
+  /* Contenedor principal */
+  .ver-page {
+    background-color: #8b5353;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+  }
+
+  /* Encabezado */
+  .ver-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 25px;
+    padding-top: 20px;
+  }
+
+  .ver-header h1 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: white;
+    text-align: center;
+  }
+
+  /* Botón de atrás */
+  .atras-btn {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  /* Botón de cerrar */
+  .cerrar-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: white;
+    color: #8b5353;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  /* Contenedor de imagen */
+  .game-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border: 4px solid white;
+  }
+
+  .game-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Detalles del juego */
+  .game-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .detail-row {
+    display: flex;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .detail-label {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    width: 40%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .detail-value {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 12px;
+    width: 60%;
+    color: white;
+  }
+}
+
+/* ===========================================
+   AJUSTES PARA DISPOSITIVOS MUY PEQUEÑOS
+   Se aplican cuando el ancho de pantalla es menor o igual a 480px
+   =========================================== */
+@media (max-width: 480px) {
+  .ver-page {
+    padding: 15px;
+  }
+
+  .ver-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .game-image-container {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 25px;
+  }
+
+  .detail-label,
+  .detail-value {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}

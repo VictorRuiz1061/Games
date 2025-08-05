@@ -1,26 +1,343 @@
-@import "tailwindcss";
+/* ===========================================
+   ESTILOS BASE COMPARTIDOS
+   Estos estilos se aplican a todos los dispositivos
+   =========================================== */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+body {
+  margin: 0;          /* Elimina el margen predeterminado */
+  padding: 0;         /* Elimina el relleno predeterminado */
+  font-family: Arial, Helvetica, sans-serif;  /* Establece la fuente para todo el sitio */
+  color: #fff;        /* Color de texto blanco */
+  background-color: #f5b5b5;  /* Fondo rosa claro */
+  overflow: hidden;   /* Evita el desplazamiento vertical y horizontal */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Reseteo de estilos para inputs y botones */
+input, button {
+  outline: none;      /* Elimina el contorno al hacer focus */
+  border: none;       /* Elimina los bordes */
+  font-family: inherit;  /* Hereda la fuente del elemento padre (body) */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.input-password-container {
+  position: relative;
+  width: 100%;
+  width: 380px;
+  display: flex;
+  align-items: center;
+}
+
+.input-password-container input {
+  width: 100%;
+  padding-right: 44px; /* Espacio para el icono */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.eye-icon:hover,
+.eye-icon:focus {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ===========================================
+   ESTILOS PARA ESCRITORIO (PC)
+   Se aplican cuando el ancho de pantalla es mayor a 769px
+   =========================================== */
+@media (min-width: 769px) {
+  /* Centrado vertical y horizontal en toda la pantalla */
+  body {
+    height: 100vh;    /* Altura al 100% de la ventana */
+    display: flex;    /* Activa flexbox */
+    align-items: center;    /* Centra verticalmente */
+    justify-content: center;  /* Centra horizontalmente */
+  }
+
+  /* Contenedor principal del formulario */
+  .inicio-sesion {
+    display: flex;            /* Activa flexbox */
+    flex-direction: column;   /* Apila elementos verticalmente */
+    align-items: center;      /* Centra horizontalmente los elementos */
+    justify-content: center;  /* Centra verticalmente los elementos */
+    height: 100%;
+    max-height: 650px;
+    width: 100%;              /* Ocupa todo el ancho disponible */
+    max-width: 380px;         /* Limita el ancho máximo */
+    padding: 2rem 1.5rem;     /* Espacio interno: arriba/abajo 2rem, izquierda/derecha 1.5rem */
+    background-color: #f5b5b5;  /* Mismo color que el fondo */
+    border-radius: 30px;      /* Esquinas redondeadas */
+    box-shadow: 0 0 800px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    position: relative;       /* Establece posicionamiento relativo para los hijos absolutos */
+  }
+
+  /* Contenedor del título "nintengames" */
+  .title-container {
+    display: flex;           /* Activa flexbox */
+    position: absolute;      /* Posicionamiento absoluto respecto al contenedor */
+    top: 40px;              /* Distancia desde arriba */
+    left: 50%;              /* Centra horizontalmente */
+    transform: translateX(-50%);  /* Ajusta el centrado horizontal */
+    z-index: 2;             /* Capa de visualización por encima del logo */
+  }
+
+  /* Contenedor de la imagen de Mario */
+  .logo-container {
+    display: flex;           /* Activa flexbox */
+    flex-direction: column;  /* Apila elementos verticalmente */
+    align-items: center;     /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    margin-bottom: 0;        /* Sin margen inferior */
+    width: 100%;             /* Ocupa todo el ancho disponible */
+    height: 250px;           /* Altura fija */
+    position: relative;      /* Para posicionamiento de elementos internos */
+  }
+
+  /* Imagen de Mario */
+  .logo-container img {
+    width: 180px;           /* Ancho fijo */
+    height: auto;           /* Altura automática para mantener proporción */
+    object-fit: contain;    /* Ajusta la imagen sin distorsionar */
+    margin: 0;              /* Sin margen */
+    position: relative;     /* Posicionamiento relativo */
+    z-index: 1;             /* Capa de visualización */
+  }
+
+  /* Estilo para los títulos h1 */
+  .inicio-sesion h1 {
+    margin: 0;               /* Sin margen */
+    font-size: 1.8rem;       /* Tamaño de fuente */
+    text-transform: lowercase; /* Texto en minúsculas */
+    line-height: 1;          /* Altura de línea ajustada */
+    color: #8b4646;          /* Color marrón rojizo */
+    font-weight: 600;        /* Grosor de fuente semibold */
+  }
+
+  /* Primer título "ninten" */
+  .inicio-sesion h1:first-of-type {
+    color: #8b4646;          /* Color marrón rojizo */
+  }
+
+  /* Segundo título "games" */
+  .inicio-sesion h1:last-of-type {
+    color: #ffffff;          /* Color blanco */
+  }
+
+  /* Formulario de inicio de sesión */
+  .inicio-sesion form {
+    width: 100%;             /* Ocupa todo el ancho disponible */
+    max-width: 350px;         /* Limita el ancho máximo */
+    display: flex;           /* Activa flexbox */
+    flex-direction: column;  /* Apila elementos verticalmente */
+    gap: 1rem;               /* Espacio entre elementos */
+    position: relative;      /* Posicionamiento relativo */
+    z-index: 2;              /* Capa de visualización */
+  }
+
+  /* Campos de entrada (email y contraseña) */
+  .inicio-sesion input {
+    width: 100%;             /* Ocupa todo el ancho disponible */
+    padding: 0.9rem 1rem;    /* Relleno interno */
+    border-radius: 25px;     /* Esquinas muy redondeadas */
+    background-color: rgba(255, 255, 255, 0.7);  /* Blanco semi-transparente */
+    color: #999;             /* Color de texto gris */
+    font-size: 1rem;         /* Tamaño de fuente */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+  }
+
+  /* Texto de placeholder en los inputs */
+  .inicio-sesion input::placeholder {
+    color: #b88888;          /* Color rosa oscuro */
+  }
+
+  /* Efecto al seleccionar un input */
+  .inicio-sesion input:focus {
+    background-color: rgba(255, 255, 255, 0.8);  /* Blanco menos transparente */
+  }
+
+  /* Botón de ingresar */
+  .inicio-sesion button {
+    width: 380px;             /* Ocupa todo el ancho disponible */
+    padding: 0.9rem;         /* Relleno interno */
+    margin-top: 0.5rem;      /* Margen superior */
+    background-color: #b86868; /* Color rosa oscuro */
+    color: white;            /* Texto blanco */
+    border-radius: 25px;     /* Esquinas muy redondeadas */
+    font-size: 1rem;         /* Tamaño de fuente */
+    font-weight: normal;     /* Grosor de fuente normal */
+    cursor: pointer;         /* Cambia el cursor a mano */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+  }
+
+  /* Efecto al pasar el ratón sobre el botón */
+  .inicio-sesion button:hover {
+    background-color: #a55a5a; /* Color rosa más oscuro */
+  }
+
+  /* Efecto al hacer clic en el botón */
+  .inicio-sesion button:active {
+    transform: translateY(1px); /* Efecto de pulsación */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===========================================
+   ESTILOS PARA MÓVIL
+   Se aplican cuando el ancho de pantalla es menor o igual a 768px
+   =========================================== */
+@media (max-width: 768px) {
+  /* Evita el desplazamiento en toda la página */
+  html, body {
+    height: 100%;           /* Altura al 100% */
+    width: 100%;            /* Ancho al 100% */
+    position: fixed;        /* Posición fija para evitar scroll */
+    overflow: hidden;       /* Oculta el desbordamiento */
+  }
+  
+  /* Mantiene el color de fondo */
+  body {
+    background-color: #f5b5b5;
+  }
+  
+  /* Contenedor principal a pantalla completa */
+  .inicio-sesion {
+    position: fixed;        /* Posición fija */
+    top: 0;                 /* Pegado a la parte superior */
+    left: 0;                /* Pegado a la izquierda */
+    width: 100%;  
+    max-width: 410px;         /* Limita el ancho máximo */
+    height: 100%;           /* Alto completo */
+    max-height: 800px;
+    display: flex;          /* Activa flexbox */
+    flex-direction: column; /* Apila elementos verticalmente */
+    align-items: center;    /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    padding: 0;             /* Sin relleno */
+    overflow: hidden;       /* Oculta el desbordamiento */
+  }
+  
+  /* Contenedor del título "nintengames" */
+  .title-container {
+    display: flex;          /* Activa flexbox */
+    position: absolute;     /* Posicionamiento absoluto */
+    top: 180px;            /* Distancia desde arriba */
+    left: 50%;             /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta el centrado horizontal */
+    z-index: 2;            /* Capa de visualización */
+  }
+  
+  /* Estilo para los títulos h1 */
+  .inicio-sesion h1 {
+    margin: 0;              /* Sin margen */
+    font-size: 1.8rem;      /* Tamaño de fuente */
+    text-transform: lowercase; /* Texto en minúsculas */
+    line-height: 1;         /* Altura de línea ajustada */
+    color: #8b4646;         /* Color marrón rojizo */
+    font-weight: 600;       /* Grosor de fuente semibold */
+  }
+
+  /* Primer título "ninten" */
+  .inicio-sesion h1:first-of-type {
+    color: #8b4646;         /* Color marrón rojizo */
+  }
+
+  /* Segundo título "games" */
+  .inicio-sesion h1:last-of-type {
+    color: #ffffff;         /* Color blanco */
+  }
+  
+  /* Contenedor de la imagen de Mario */
+  .logo-container {
+    display: flex;          /* Activa flexbox */
+    align-items: center;    /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    width: 100%;            /* Ancho completo */
+    height: 100%;           /* Alto completo */
+    position: absolute;     /* Posicionamiento absoluto */
+    top: 0;                 /* Pegado a la parte superior */
+    left: 0;                /* Pegado a la izquierda */
+  }
+  
+  /* Formulario de inicio de sesión */
+  .inicio-sesion form {
+    width: 90%;             /* Ocupa el 90% del ancho disponible */
+    max-width: 350px;       /* Limita el ancho máximo */
+    display: flex;          /* Activa flexbox */
+    flex-direction: column; /* Apila elementos verticalmente */
+    gap: 1rem;              /* Espacio entre elementos */
+    position: absolute;     /* Posicionamiento absoluto */
+    bottom: 100px;          /* Distancia desde abajo */
+    z-index: 2;             /* Capa de visualización */
+    padding: 0;             /* Sin relleno */
+  }
+  
+  /* Campos de entrada (email y contraseña) */
+  .inicio-sesion input {
+    width: 100%;            /* Ocupa todo el ancho disponible */
+    padding: 0.9rem 1rem;   /* Relleno interno */
+    border-radius: 25px;    /* Esquinas muy redondeadas */
+    background-color: rgba(255, 255, 255, 0.7); /* Blanco semi-transparente */
+    color: #999;            /* Color de texto gris */
+    font-size: 1rem;        /* Tamaño de fuente */
+  }
+  
+  /* Texto de placeholder en los inputs */
+  .inicio-sesion input::placeholder {
+    color: #b88888;         /* Color rosa oscuro */
+  }
+  
+  /* Botón de ingresar */
+  .inicio-sesion button {
+    width: 100%;            /* Ocupa todo el ancho disponible */
+    padding: 0.9rem;        /* Relleno interno */
+    margin-top: 0.5rem;     /* Margen superior */
+    background-color: #b86868; /* Color rosa oscuro */
+    color: white;           /* Texto blanco */
+    height: 50px;
+    width: 380px;
+    border-radius: 25px;    /* Esquinas muy redondeadas */
+    font-size: 1rem;        /* Tamaño de fuente */
+    font-weight: normal;    /* Grosor de fuente normal */
+  }
+}
+
+/* ===========================================
+   AJUSTES PARA DISPOSITIVOS MUY PEQUEÑOS
+   Se aplican cuando el ancho de pantalla es menor o igual a 480px
+   =========================================== */
+@media (max-width: 480px) {
+  /* Ajusta la posición del título para pantallas pequeñas */
+  .title-container {
+    top: 120px;             /* Reduce la distancia desde arriba */
+  }
+  
+  /* Reduce el tamaño de la imagen en pantallas pequeñas */
+  .logo-container img {
+    width: 220px;           /* Ancho más pequeño */
+  }
+  
+  /* Ajusta la posición del formulario para pantallas pequeñas */
+  .inicio-sesion form {
+    bottom: 80px;           /* Reduce la distancia desde abajo */
+  }
 }

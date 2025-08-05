@@ -1,0 +1,40 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id Int @id @default(autoincrement())
+  fullname String @db.VarChar(32)
+  email String @db.VarChar(32)
+  password String @db.VarChar(64)
+}
+
+model games {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(32)
+  cover String @db.VarChar(64)
+  year Int /* nose */
+  platform_id Int 
+  category_id Int
+  platform platforms @relation(fields: [platform_id], references: [id])
+  category categories @relation(fields: [category_id], references: [id])
+}
+
+model platforms {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(32)
+  games games[]
+}
+
+model categories {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(32)
+  games games[]
+}
