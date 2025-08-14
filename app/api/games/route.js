@@ -1,72 +1,77 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "../../generated/prisma";
-import path from "path";
+import { join } from "path";
 import fs from "fs";
 
 const prisma = new PrismaClient();
 
+// Helpers
+const json = (data, status = 200) => NextResponse.json(data, { status });
+
+async function saveCoverFile(file) {
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+
+  const fileName = `${Date.now()}_${file.name || "cover.jpg"}`;
+  const uploadDir = join(process.cwd(), "public", "uploads");
+
+  if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+
+  fs.writeFileSync(join(uploadDir, fileName), buffer);
+  return `/uploads/${fileName}`;
+}
+
+// GET: Listar juegos
 export async function GET() {
   const games = await prisma.games.findMany();
-  return NextResponse.json(games);
+  return json(games);
 }
+
+// POST: Crear juego
 export async function POST(request) {
   try {
     const formData = await request.formData();
-
     const title = formData.get("title");
-    const year = formData.get("year");
-    const plataformId = formData.get("plataformId");
-    const categoryId = formData.get("categoryId");
+    const year = parseInt(formData.get("year"));
+    const plataformId = parseInt(formData.get("plataformId"));
+    const categoryId = parseInt(formData.get("categoryId"));
     const coverFile = formData.get("cover");
 
-    if (!title || !year || !plataformId || !categoryId || !coverFile) {
-      return NextResponse.json({ error: "Todos los campos son obligatorios" }, { status: 400 });
-    }
+    // Validaciones básicas
+    if (!title || !year || !plataformId || !categoryId || !coverFile)
+      return json({ error: "Todos los campos son obligatorios" }, 400);
 
-    if (!(coverFile instanceof File)) {
-      return NextResponse.json({ error: "El archivo 'cover' no es válido" }, { status: 400 });
-    }
+    if (isNaN(year)) return json({ error: "El campo 'year' debe ser un número válido" }, 400);
 
-    const bytes = await coverFile.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const fileName = `${Date.now()}_${coverFile.name || "cover.jpg"}`;
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
+    if (!(coverFile instanceof File))
+      return json({ error: "El archivo 'cover' no es válido" }, 400);
 
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
+    // Guardar imagen
+    const imageUrl = await saveCoverFile(coverFile);
 
-    const filePath = path.join(uploadDir, fileName);
-    fs.writeFileSync(filePath, buffer);
+    // Validar relaciones
+    const [platformExists, categoryExists] = await Promise.all([
+      prisma.platforms.findUnique({ where: { id: plataformId } }),
+      prisma.categories.findUnique({ where: { id: categoryId } })
+    ]);
 
-    const imageUrl = `/uploads/${fileName}`;
+    if (!platformExists) return json({ error: "La plataforma seleccionada no existe" }, 400);
+    if (!categoryExists) return json({ error: "La categoría seleccionada no existe" }, 400);
 
-    // ✅ Convertir año a fecha válida
-    const parsedYear = new Date();
-    if (isNaN(parsedYear.getTime())) {
-      return NextResponse.json({ error: "El campo 'year' no es una fecha válida" }, { status: 400 });
-    }
-
+    // Crear juego
     const newGame = await prisma.games.create({
       data: {
         title: String(title),
-        year: parsedYear,
-        plataformId: parseInt(String(plataformId)),
-        categoryId: parseInt(String(categoryId)),
+        year,
         cover: imageUrl,
-      },
+        platform: { connect: { id: plataformId } },
+        category: { connect: { id: categoryId } }
+      }
     });
 
-    return NextResponse.json({
-      message: "Juego creado exitosamente",
-      data: newGame,
-    });
+    return json({ message: "Juego creado exitosamente", data: newGame });
   } catch (error) {
     console.error("Error al crear juego:", error);
-    return NextResponse.json(
-      { error: error.message || "Error al procesar la solicitud" },
-      { status: 500 }
-    );
+    return json({ error: error.message || "Error al procesar la solicitud" }, 500);
   }
 }
-

@@ -1,0 +1,300 @@
+/* ==========================
+   RESET Y ESTILOS BASE
+   ========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ver-page {
+  background-color: #8b5353;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+.ver-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ver-header h1 {
+  font-weight: normal;
+  color: white;
+  text-align: center;
+}
+
+.atras-btn,
+.cerrar-btn {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.atras-btn {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.atras-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cerrar-btn {
+  background-color: white;
+  color: #8b5353;
+  border: none;
+}
+
+.cerrar-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.game-image-container {
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.game-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-row {
+  display: flex;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.detail-label {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.detail-value {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+.action-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.edit-button {
+  background-color: #4a2828;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #6b3a3a;
+}
+
+/* ==========================
+   ESCRITORIO
+   ========================== */
+@media (min-width: 768px) {
+  .ver-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+
+  .ver-header {
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .ver-header h1 {
+    font-size: 1.8rem;
+    flex-grow: 1;
+  }
+
+  .atras-btn {
+    left: 30px;
+    top: 30px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .cerrar-btn {
+    right: 30px;
+    top: 30px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .game-image-container {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 40px;
+    border: 5px solid white;
+  }
+
+  .game-details {
+    max-width: 500px;
+    gap: 15px;
+  }
+
+  .detail-label,
+  .detail-value {
+    padding: 15px;
+  }
+
+  .detail-label {
+    width: 40%;
+  }
+
+  .detail-value {
+    width: 60%;
+  }
+
+  .edit-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================
+   MÓVIL
+   ========================== */
+@media (max-width: 768px) {
+  .detail-label,
+  .detail-value {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .detail-row {
+  display: flex;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.detail-label {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  flex: 1 1 40%; /* crece, encoge, base */
+  min-width: 90px; /* evita que se comprima demasiado */
+}
+
+.detail-value {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  flex: 2 1 60%;
+  min-width: 120px;
+}
+
+
+  .ver-header {
+    margin-bottom: 25px;
+    padding-top: 20px;
+  }
+
+  .ver-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .atras-btn {
+    left: 20px;
+    top: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.3rem;
+  }
+
+  .cerrar-btn {
+    right: 20px;
+    top: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .game-image-container {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    border: 4px solid white;
+  }
+
+  .game-details {
+    gap: 12px;
+  }
+
+  .detail-label,
+  .detail-value {
+    padding: 12px;
+  }
+
+  .edit-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================
+   MUY PEQUEÑOS
+   ========================== */
+@media (max-width: 480px) {
+  .ver-page {
+    padding: 15px;
+  }
+
+  .ver-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .game-image-container {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 25px;
+  }
+
+  .detail-label,
+  .detail-value {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}

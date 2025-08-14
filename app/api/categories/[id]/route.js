@@ -12,7 +12,6 @@ export async function GET(request, { params }) {
         return NextResponse.json(categories);
 }
 
-
 export async function PUT(request, { params }) {
     const id = params.id;
         const json = await request.json();
@@ -25,7 +24,6 @@ export async function PUT(request, { params }) {
         return NextResponse.json(categories);
 }
 
-
 export async function DELETE(request, { params }) {
     const id = params.id;
 
@@ -34,4 +32,3 @@ export async function DELETE(request, { params }) {
         });
     return NextResponse.json("categories eliminado correctamente");
 }
-

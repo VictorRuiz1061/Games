@@ -8,7 +8,6 @@ export async function GET () {
     return NextResponse.json(categories)
 }
 
-
 export async function POST(request) {
         const json = await request.json();
         const categories = await prisma.categories.create(

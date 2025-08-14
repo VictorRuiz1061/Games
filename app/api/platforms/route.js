@@ -8,7 +8,6 @@ export async function GET () {
     return NextResponse.json(platforms)
 }
 
-
 export async function POST(request) {
         const json = await request.json();
         const platforms = await prisma.platforms.create(
